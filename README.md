@@ -15,19 +15,77 @@
 	<img src="assets/ss.jpg"/>
 </p>
 
+## Installation
+
+### Midnight Commander ([MidnightCommander/mc](https://github.com/MidnightCommander/mc))
+
+Download `catpuccin.ini` and four `catppuccin-FLAVOR.ini` files and place them in `~/.local/share/mc/skins` directory (you may need to create it first).
+
+**_OR_**
+
+Run this:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/catppuccin/mc/main/install.sh | sh
+```
+
+### Midnight Commander for Windows ([adamyg/mcwin32](https://github.com/adamyg/mcwin32))
+
+Download four `catppuccin-FLAVOR.ini` files and place them into `~\AppData\Local\Midnight Commander\skins` (you may need to create it first).
+
+**_OR_**
+
+Run this:
+
+```powershell
+iwr https://raw.githubusercontent.com/catppuccin/mc/main/install.ps1 | iex
+```
+
 ## Usage
 
-1. Clone the file named `catppuccin.ini` and paste it under `$HOME/.local/share/mc/skins`:
-```bash
-mkdir -p $HOME/.local/share/mc/skins && cd $HOME/.local/share/mc/skins && git clone https://github.com/catppuccin/mc.git && ln -s -f ./mc/catppuccin.ini .
-```
-2. Change or add `skin=catppuccin` in the `[Midnight-Commander]` section inside `~/.config/mc/ini` **_OR_** Choose the skin inside Midnight Commander through F9>Options>Appearance and Save setup through F9>Options/Save setup 
+1. Inside Midnight Commander;
+2. Choose the skin: `[F9]` > `[O]ptions` > `[A]ppearance`.
+3. Save your setup: `[F9]` > `[O]ptions` > `[S]ave Setup`.
+
+**_OR_**
+
+1. Open the file:
+
+   - `~/.config/mc/ini` for Midnight Commander;
+   - `~\AppData\Roaming\Midnight Commander\ini` for Midnight Commander on Windows.
+
+2. Set the value of the `skin` element in the `[Midnight-Commander]` section to:
+
+   - `catppuccin`, or
+   - `catppuccin-frappe`, or
+   - `catppuccin-latte`, or
+   - `catppuccin-macchiato`, or
+   - `catppuccin-mocha`.
 
 ## 🙋 FAQ
 
--	Q: **_"I installed the skin but it's showing different colors!"_**
-	
-> A: Midnight Commander skins take the colors from the terminal colors, you need to have a catppuccin flavour installed for your terminal first.
+- Q: **_"What's the difference between `catppuccin.ini` and `catppuccin-FLAVOR.ini` files?"_**
+
+> A: They act in different ways.
+>
+> - `catppuccin.ini` uses terminal colors. This means you need to have a Catppuccin theme (color
+>   scheme) installed in your terminal app. When you change colors in you terminal, this affects
+>   the Midnight Commander. The Midnight Commander skin is synchronized with the terminal colors.
+>   It works well in Midnight Commander on macOS, BSD and Linux, including WSL. This approach does
+>   not work in Midnight Commander for Windows.
+> - `catppuccin-FLAVOR.ini` files define colors independently. You don't need to have a Catppuccin
+>   colors installed in your terminal. You can have different themes or Catppuccin flavours in
+>   terminal and Midnight Commander. You can change colors in your terminal, this doesn't affect
+>   Midnight Commander. This approach work in both original Midnight Commander and Midnight
+>   Commander for Windows.
+
+- Q: **_Unable to use skin with true colors support: Set COLORTERM=truecolor if your terminal
+  really supports true colors._**
+
+> A: `catpuccin-FLAVOR.ini` themes require true color support. This can happen particularly in WSL.
+> Execute `export COLORTERM=truecolor`. You may want to add it to your `~/.bashrc` or `~/.zshrc`
+> profile, for it to survive terminal reload. Otherwise, you can use `catpuccin.ini`, as it does
+> not state this requirement.
 
 ## 💝 Thanks to
 
