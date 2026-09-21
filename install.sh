@@ -1,7 +1,14 @@
 #!/bin/sh
 
+set -e
+
 BASE="https://raw.githubusercontent.com/catppuccin/mc/main"
-SKINS="$HOME/.local/share/mc/skins"
+
+if [ -n "${MC_PROFILE_ROOT:-}" ] && [ "$MC_PROFILE_ROOT" != "$HOME" ]; then
+  SKINS="$MC_PROFILE_ROOT/.local/share/mc/skins"
+else
+  SKINS="${XDG_DATA_HOME:-"$HOME/.local/share"}/mc/skins"
+fi
 
 mkdir -p "$SKINS"
 
